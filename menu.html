@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Suit</title>
+    <style>
+      body {
+        background: #202028;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 2em;
+        text-align: center;
+      }
+      canvas {
+        border: solid .2em #fff;
+        height: 90vh;
+      }
+      #main{
+        display: none;
+      }
+      #newGame, #creditBtn, #backBtn{
+        text-align: center;
+        vertical-align: middle;
+        border: 2px solid rgb(27, 121, 222);
+        border-radius: 7px;
+        background-color: rgb(17, 123, 204);
+        color: rgb(155, 176, 229);
+        font-size: 32px;
+        font-weight: bold;
+        font-family: "Courier New";
+        width: 5em;
+        margin: 5px auto;
+       
+      }
+      #theHead{
+        margin: auto;
+        color: rgb(35, 166, 189);
+        font-size: 2em;
+        font-family: "Courier New";
+      }
+      #credits{
+        margin: auto;
+        color: rgb(29, 153, 224);
+        font-size: 1em;
+        font-family: "Courier New";
+        display: none;
+        background-color: inherit;
+      }
+      #backBtn{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div id="theHead">Welcome to Suit++!</div>
+    <div id="newGame" onclick="runGame()" onmouseover="this.style.backgroundColor = 'lightblue'" onmouseout="this.style.backgroundColor = 'blue'">New Game</div>
+    <div id="creditBtn" onmouseover="this.style.backgroundColor = 'lightblue'" onmouseout="this.style.backgroundColor = 'blue'" onclick="showCredits()">Credits</div>
+    <div id="credits">Made by :<br>Maverick<br>Handitya<br>Abiel</div>
+    <div id="backBtn" onmouseover="this.style.backgroundColor = 'lightblue'" onmouseout="this.style.backgroundColor = 'blue'" onclick="goBack()">Back</div>
+    <div id="main">
+    <div id="score"></div>
+    <canvas id="suit" width="240" height="400">
+    </div>
+    <script src="suit.js"></script>
+    <script>
+      var runGame = function(){
+        document.getElementById("newGame").style.display = "none";
+        document.getElementById("theHead").style.display = "none";
+        
+ document.getElementById("credits").style.display = "none";       
+        document.getElementById("main").style.display = "block";
+        document.getElementById("creditBtn").style.display = "none";
+        playerReset();
+        updateScore();
+        update();
+      };
+     var showCredits = function(){
+       document.getElementById("theHead").style.display = "none";
+       document.getElementById("creditBtn").style.display = "none";
+       document.getElementById("newGame").style.display = "none";
+       document.getElementById("credits").style.display = "block";
+       document.getElementById("backBtn").style.display = "block";
+     };
+      
+    var goBack = function(){
+      document.getElementById("backBtn").style.display = "none";
+      document.getElementById("credits").style.display = "none";
+      document.getElementById("theHead").style.display = "block";
+      document.getElementById("newGame").style.display = "block";
+      document.getElementById("creditBtn").style.display = "block";
+    };
+    </script>
+    
+</body>
+<html>  
