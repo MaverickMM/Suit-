@@ -48,7 +48,7 @@ function buildVars(){
 
 
   typeSprite = 'http://orig15.deviantart.net/24d8/f/2011/057/3/5/ge___energy_type_icons_by_aschefield101-d3agp02.png';
-  types = ['batu_attack', 'gunting_attack','kertas_attack'];
+  types = ['batu_attack', 'gunting_attack','kertas_attack','none'];
 
 
 
@@ -76,10 +76,9 @@ function buildVars(){
   // available characters
   characters = [
     {
-      name: "batu",
-      type: 'batu_attack', //batu
-      weakness: ['kertas_attack'], //kertas
-      resistance: ['gunting_attack'], //gunting
+      name: "player",
+      weakness: ['none'], //debuff
+      resistance: ['none'], //buff
       img: {
         default: "http://vignette2.wikia.nocookie.net/all-anime-characters/images/7/7b/Cute_pikachu_with_hat_by_mlpochea-d63xlom.png/revision/latest?cb=20150108111832",
         front: "http://rs1263.pbsrc.com/albums/ii631/Pokemon-Vampire-Knight-lover/pikachu_.gif~c200",
@@ -91,93 +90,35 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "meteor shower",
-          hp: randomNum(40,20),
-          avail: {
-            total: 30,
-            remaining: 30
-          }
-        },
-        {
-          name: "batu bata",
-          hp: randomNum(60,45),
-          avail: {
-            total: 10,
-            remaining: 10
-          }
-        },
-        {
-          name: "terlempar batu",
-          hp: randomNum(75,60),
+          name: "gunting",
+          hp: 10,
           avail: {
             total: 5,
             remaining: 5
           }
         },
         {
-          name: "krikil",
-          hp: randomNum(160, 130),
-          avail: {
-            total: 2,
-            remaining: 2
-          }
-        }
-      ]
-    },
-    {
-      name: "gunting",
-      type: 'gunting_attack', //gunting
-      weakness: ['batu_attack'], //batu
-      resistance: ['kertas_attack'], //kertas
-      img: {
-        default: "http://img3.wikia.nocookie.net/__cb20150330015216/pokemon/images/f/f5/004Charmander_Pokemon_Mystery_Dungeon_Explorers_of_Sky.png",
-        front: "http://rs772.pbsrc.com/albums/yy9/HybridRainbow88/Charmander.gif~c200",
-        back: "http://vignette1.wikia.nocookie.net/pokemon/images/2/23/Charmander_Back_XY.gif/revision/latest?cb=20141009063457"
-      },
-      hp: {
-        current: 500,
-        total: 500
-      },
-      attacks: [
-        {
-          name: "gunting slash",
-          hp: randomNum(40,20),
-          avail: {
-            total: 30,
-            remaining: 30
-          }
-        },
-        {
-          name: "gunting punch",
-          hp: randomNum(60,45),
-          avail: {
-            total: 10,
-            remaining: 10
-          }
-        },
-        {
-          name: "tergunting",
-          hp: randomNum(75,60),
+          name: "batu",
+          hp: 10,
           avail: {
             total: 5,
             remaining: 5
           }
         },
         {
-          name: "gunting biasa",
-          hp: randomNum(160, 130),
+          name: "kertas",
+          hp: 10,
           avail: {
-            total: 2,
-            remaining: 2
+            total: 5,
+            remaining: 5
           }
         }
       ]
     },
     {
-      name: "kertas",
-      type: 'kertas_attack', //kertas
-      weakness: ['gunting_attack'], //gunting
-      resistance: ['batu_attack'], //batu
+      name: "enemy",
+      weakness: ['none'], //debuff
+      resistance: ['none'], //buff
       img: {
         default: "http://vignette3.wikia.nocookie.net/ssbb/images/7/79/Squirtle_Rojo_Fuego_y_Verde_Hoja.png/revision/latest?cb=20130907041944&path-prefix=es",
         front: "https://66.media.tumblr.com/ddd22fe10a485ed56a46d958c058a970/tumblr_n9lnpepqkW1scncwdo1_500.gif",
@@ -189,35 +130,27 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "kertas keramat",
-          hp: randomNum(40,20),
-          avail: {
-            total: 30,
-            remaining: 30
-          }
-        },
-        {
-          name: "peluru kertas",
-          hp: randomNum(60,45),
-          avail: {
-            total: 10,
-            remaining: 10
-          }
-        },
-        {
-          name: "bola kertas",
-          hp: randomNum(75,60),
+          name: "gunting",
+          hp: 10,
           avail: {
             total: 5,
             remaining: 5
           }
         },
         {
-          name: "tisu",
-          hp: randomNum(160, 130),
+          name: "batu",
+          hp: 10,
           avail: {
-            total: 2,
-            remaining: 2
+            total: 5,
+            remaining: 5
+          }
+        },
+        {
+          name: "kertas",
+          hp: 10,
+          avail: {
+            total: 5,
+            remaining: 5
           }
         }
       ]
@@ -261,7 +194,7 @@ function populateChar(container,character){
   }
 
   // build the character
-  container.append('<section class="char"><img src="'+gameData[character].img[facing]+'" alt="'+gameData[character].name+'"><aside class="data"><h2>'+gameData[character].name+'</h2><div><progress max="'+gameData[character].hp.total+'"></progress><p><span>'+gameData[character].hp.current+'</span>/'+gameData[character].hp.total+'</p></div></aside></section>');
+  container.append('<div class="char"><img src="'+gameData[character].img[facing]+'" alt="'+gameData[character].name+'"><div class="data"><h2>'+gameData[character].name+'</h2><div><progress max="'+gameData[character].hp.total+'"></progress><p><span>'+gameData[character].hp.current+'</span>/'+gameData[character].hp.total+'</p></div></aside></div>');
 }
 
 

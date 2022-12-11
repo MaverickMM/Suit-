@@ -124,15 +124,19 @@ strong {
 }
 .stadium .enemy img {
   right: 15vw;
+  top: 10vw;
 }
 .stadium .enemy .data {
-  left: 15vw;
+  right: 15vw;
+  
 }
 .stadium .hero img {
   left: 15vw;
+  bottom: 10vw;
 }
 .stadium .hero .data {
-  right: 15vw;
+  left: 15vw;
+  
 }
 
 .attack-list {
