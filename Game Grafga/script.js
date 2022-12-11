@@ -91,7 +91,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "thunder jolt",
+          name: "Meteor Shower",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -99,7 +99,7 @@ function buildVars(){
           }
         },
         {
-          name: "electro ball",
+          name: "Batu Bata",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -107,7 +107,7 @@ function buildVars(){
           }
         },
         {
-          name: "volt tackle",
+          name: "Terlempar Batu",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -115,7 +115,7 @@ function buildVars(){
           }
         },
         {
-          name: "thunder crack",
+          name: "Krikil",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
@@ -140,7 +140,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "ember",
+          name: "Gunting Slash",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -148,7 +148,7 @@ function buildVars(){
           }
         },
         {
-          name: "flamethrower",
+          name: "Gu Gunting Punch",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -156,7 +156,7 @@ function buildVars(){
           }
         },
         {
-          name: "burning tail",
+          name: "Tergunting",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -164,7 +164,7 @@ function buildVars(){
           }
         },
         {
-          name: "gunting_attack spin",
+          name: "Gunting Biasa",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
@@ -189,7 +189,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "bubble",
+          name: "SandPaper",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -197,7 +197,7 @@ function buildVars(){
           }
         },
         {
-          name: "kertas_attack gun",
+          name: "Peluru Kertas",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -205,7 +205,7 @@ function buildVars(){
           }
         },
         {
-          name: "shell attack",
+          name: "Lempar Bola Kertas",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -213,7 +213,7 @@ function buildVars(){
           }
         },
         {
-          name: "hydro pump",
+          name: "Tissue",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
