@@ -91,7 +91,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "Meteor Shower",
+          name: "meteor shower",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -99,7 +99,7 @@ function buildVars(){
           }
         },
         {
-          name: "Batu Bata",
+          name: "batu bata",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -107,7 +107,7 @@ function buildVars(){
           }
         },
         {
-          name: "Terlempar Batu",
+          name: "terlempar batu",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -115,7 +115,7 @@ function buildVars(){
           }
         },
         {
-          name: "Krikil",
+          name: "krikil",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
@@ -140,7 +140,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "Gunting Slash",
+          name: "gunting slash",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -148,7 +148,7 @@ function buildVars(){
           }
         },
         {
-          name: "Gu Gunting Punch",
+          name: "gunting punch",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -156,7 +156,7 @@ function buildVars(){
           }
         },
         {
-          name: "Tergunting",
+          name: "tergunting",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -164,7 +164,7 @@ function buildVars(){
           }
         },
         {
-          name: "Gunting Biasa",
+          name: "gunting biasa",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
@@ -189,7 +189,7 @@ function buildVars(){
       },
       attacks: [
         {
-          name: "SandPaper",
+          name: "kertas keramat",
           hp: randomNum(40,20),
           avail: {
             total: 30,
@@ -197,7 +197,7 @@ function buildVars(){
           }
         },
         {
-          name: "Peluru Kertas",
+          name: "peluru kertas",
           hp: randomNum(60,45),
           avail: {
             total: 10,
@@ -205,7 +205,7 @@ function buildVars(){
           }
         },
         {
-          name: "Lempar Bola Kertas",
+          name: "bola kertas",
           hp: randomNum(75,60),
           avail: {
             total: 5,
@@ -213,7 +213,7 @@ function buildVars(){
           }
         },
         {
-          name: "Tissue",
+          name: "tisu",
           hp: randomNum(160, 130),
           avail: {
             total: 2,
