@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Menu</title>
+  </head>
+  <body>
+    <div style="display: flex; align-items: center; justify-content: center">
+      <canvas
+        id="myCanvas"
+        width="1000"
+        height="768"
+        style="border: 1px solid #000000"
+      >
+      </canvas>
+    </div>
+    <script>
+      //Function to get the mouse position
+      function getMousePos(canvas, event) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        };
+      }
+      //Function to check whether a point is inside a rectangle
+      function isInside(pos, rect) {
+        return (
+          pos.x > rect.x &&
+          pos.x < rect.x + rect.width &&
+          pos.y < rect.y + rect.height &&
+          pos.y > rect.y
+        );
+      }
+
+      var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
+      //The rectangle should have x,y,width,height properties
+      var rectBtnStart = {
+        x: 350,
+        y: 250,
+        width: 350,
+        height: 100,
+      };
+
+      var rectBtnCredit = {
+        x: 583,
+        y: 400,
+        width: 200,
+        height: 100,
+      };
+
+      var rectBtnBack = {
+        x: 583,
+        y: 650,
+        width: 200,
+        height: 100,
+      };
+
+      function gambarJudul() {
+        context.beginPath();
+        context.fillStyle = "Red";
+        context.font = "100px arial";
+        context.fillText("Game Over", 250, 150);
+        context.closePath();
+      }
+
+      function gambarStartButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnStart.x,
+          rectBtnStart.y,
+          rectBtnStart.width,
+          rectBtnStart.height
+        );
+        context.fillStyle = "black";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "50px arial";
+        context.fillText("Play Again?", 400, 315);
+        context.closePath();
+      }
+
+      function gambarCreditButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnCredit.x,
+          rectBtnCredit.y,
+          rectBtnCredit.width,
+          rectBtnCredit.height
+        );
+        context.fillStyle = "black";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "50px arial";
+        context.fillText("Credit", 615, 465);
+        context.closePath();
+      }
+
+      function gambarBackButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnBack.x,
+          rectBtnBack.y,
+          rectBtnBack.width,
+          rectBtnBack.height
+        );
+        context.fillStyle = "black";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "50px arial";
+        context.fillText("Back", 625, 715);
+        context.closePath();
+      }
+
+      function gambarCredit() {
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.font = "30px arial";
+        context.fillText("Created By :", 615, 225);
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.font = "30px arial";
+        context.fillText("71190427 - Gabriel Imanuel Tumakaka", 435, 275);
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.font = "30px arial";
+        context.fillText("71200537 - Johanes De Britto Handitya Gilang Wicaksana", 315, 325);
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.font = "30px arial";
+        context.fillText("71200582 - Maverick Mikolas Mulyadi", 445, 375);
+        context.closePath();
+      }
+
+      function gambarMenu() {
+        context.clearRect(0, 0, 9999, 9999);
+        gambarJudul();
+        gambarStartButton();
+      }
+
+      //Binding the click event on the canvas
+      canvas.addEventListener(
+        "click",
+        function (evt) {
+          var mousePos = getMousePos(canvas, evt);
+          if (isInside(mousePos, rectBtnStart)) {
+            <!-- alert("start button clicked"); -->
+            window.location.href = "index.html";
+          } else if (isInside(mousePos, rectBtnCredit)) {
+            context.clearRect(0, 0, 9999, 9999);
+            gambarJudul();
+            gambarBackButton();
+            gambarCredit();
+            canvas.addEventListener("click", function (evt) {
+              var mousePos = getMousePos(canvas, evt);
+              if (isInside(mousePos, rectBtnBack)) {
+                gambarMenu();
+              }
+            });
+          }
+        },
+        false
+      );
+
+      gambarMenu();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Menu</title>
+  </head>
+  <body>
+    <div style="display: flex; align-items: center; justify-content: center">
+      <canvas
+        id="myCanvas"
+        width="1400"
+        height="1000"
+        style="border: 1px solid #000000"
+      >
+
+      </canvas>
+      
+    </div>
+    <script>
+        var points = 0;
+        var points1 = 0;
+        var dmg = 0;
+        var def = 0;
+        var hpreg = 0;
+        var selsaimilih = false;
+
+
+        
+        points1 = window.onload = localStorage.getItem("pointkirim");
+        points += parseInt(points1);
+        //Function to get the mouse position
+      function getMousePos(canvas, event) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        };
+      }
+      //Function to check whether a point is inside a rectangle
+      function isInside(pos, rect) {
+        return (
+          pos.x > rect.x &&
+          pos.x < rect.x + rect.width &&
+          pos.y < rect.y + rect.height &&
+          pos.y > rect.y
+        );
+      }
+
+      var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
+      //The rectangle should have x,y,width,height properties
+      var rectBtnDmg = {
+        x: 100,
+        y: 250,
+        width: 385,
+        height: 100,
+      };
+
+
+      var rectBtnDmg1 = {
+        x: 500,
+        y: 250,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnDmg2 = {
+        x: 900,
+        y: 250,
+        width: 385,
+        height: 100,
+      };
+
+
+      var rectBtnDef = {
+        x: 100,
+        y: 400,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnDef1 = {
+        x: 500,
+        y: 400,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnDef2 = {
+        x: 900,
+        y: 400,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnHpRegen = {
+        x: 100,
+        y: 550,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnHpRegen1 = {
+        x: 500,
+        y: 550,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnHpRegen2 = {
+        x: 900,
+        y: 550,
+        width: 385,
+        height: 100,
+      };
+
+      var rectBtnBack = {
+        x: 383,
+        y: 700,
+        width: 200,
+        height: 100,
+      };
+
+      function gambarJudul() {
+        context.beginPath();
+        context.fillStyle = "green";
+        context.font = "100px arial";
+        context.fillText("Suit++", 550, 150);
+        context.closePath();
+      }
+
+      function Tampil() {
+        context.beginPath();
+        context.fillStyle = "Black";
+        context.font = "50px arial";
+        context.fillText('Points : '+points, 120, 200);
+        context.fillText('Iterasi : '+iterasi, 120, 100);
+        context.closePath();
+      }
+
+      
+
+      function gambarDmgButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnDmg.x,
+          rectBtnDmg.y,
+          rectBtnDmg.width,
+          rectBtnDmg.height
+        );
+        context.fillStyle = "red";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Damage X2 (2)", 130, 315);
+        context.closePath();
+      }
+
+      function gambarDefButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnDef.x,
+          rectBtnDef.y,
+          rectBtnDef.width,
+          rectBtnDef.height
+        );
+        context.fillStyle = "blue";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Defense 25% (2)", 130, 465);
+        context.closePath();
+      }
+
+      function gambarHpRegenButton() {
+        context.beginPath();
+        context.rect(
+          rectBtnHpRegen.x,
+          rectBtnHpRegen.y,
+          rectBtnHpRegen.width,
+          rectBtnHpRegen.height
+        );
+        context.fillStyle = "green";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("HP Regen 25% (2)", 130, 615);
+        context.closePath();
+      }
+
+      function gambarDmg1Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnDmg1.x,
+          rectBtnDmg1.y,
+          rectBtnDmg1.width,
+          rectBtnDmg1.height
+        );
+        context.fillStyle = "red";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Damage X3 (5)", 530, 315);
+        context.closePath();
+      }
+
+      function gambarDef1Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnDef1.x,
+          rectBtnDef1.y,
+          rectBtnDef1.width,
+          rectBtnDef1.height
+        );
+        context.fillStyle = "blue";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Defense 50% (5)", 530, 465);
+        context.closePath();
+      }
+
+      function gambarHpRegen1Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnHpRegen1.x,
+          rectBtnHpRegen1.y,
+          rectBtnHpRegen1.width,
+          rectBtnHpRegen1.height
+        );
+        context.fillStyle = "green";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("HP Regen 50% (5)", 530, 615);
+        context.closePath();
+      }
+
+
+      function gambarDmg2Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnDmg2.x,
+          rectBtnDmg2.y,
+          rectBtnDmg2.width,
+          rectBtnDmg2.height
+        );
+        context.fillStyle = "red";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Damage X4 (10)", 930, 315);
+        context.closePath();
+      }
+
+      function gambarDef2Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnDef2.x,
+          rectBtnDef2.y,
+          rectBtnDef2.width,
+          rectBtnDef2.height
+        );
+        context.fillStyle = "blue";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Defense 70% (8)", 930, 465);
+        context.closePath();
+      }
+
+      function gambarHpRegen2Button() {
+        context.beginPath();
+        context.rect(
+          rectBtnHpRegen2.x,
+          rectBtnHpRegen2.y,
+          rectBtnHpRegen2.width,
+          rectBtnHpRegen2.height
+        );
+        context.fillStyle = "green";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("HP Regen 70% (8)", 930, 615);
+        context.closePath();
+      }
+
+
+
+      function gambarBackButton() {
+        context.beginPath();
+        context.rect(
+        rectBtnBack.x,
+        rectBtnBack.y,
+        rectBtnBack.width,
+        rectBtnBack.height
+        );
+        context.fillStyle = "black";
+        context.fill();
+        context.fillStyle = "white";
+        context.font = "42px arial";
+        context.fillText("Back", 425, 765);
+        context.closePath();
+      }
+
+      function gambarMenu() {
+        context.clearRect(0, 0, 9999, 9999);
+        gambarJudul();
+        gambarDmgButton();
+        gambarDmg1Button();
+        gambarDmg2Button();
+        gambarDefButton();
+        gambarDef1Button();
+        gambarDef2Button();
+        gambarHpRegenButton();
+        gambarHpRegen1Button();
+        gambarHpRegen2Button();
+        gambarBackButton();
+        Tampil();
+      }
+
+      //Binding the click event on the canvas
+      canvas.addEventListener(
+        "click",
+        function (evt) {       
+          var mousePos = getMousePos(canvas, evt);
+
+
+          if (isInside(mousePos, rectBtnDmg)) {
+            if(points<=1){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 2;
+                dmg = 2;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnDmg1)) {
+            if(points<=4){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 5;
+                dmg = 3;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnDmg2)) {
+            if(points<=9){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 10;
+                dmg = 4;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnDef)) {
+            if(points<=1){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 2;
+                def = 0.25;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnDef1)) {
+            if(points<=4){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 5;
+                def = 0.50;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnDef2)) {
+            if(points<=7){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 8;
+                def = 0.70;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnHpRegen)) {
+            if(points<=1){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 2;
+                hpreg = 0.25;
+                selsaimilih = true;s
+            }
+            
+          }else if (isInside(mousePos, rectBtnHpRegen1)) {
+            if(points<=4){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 5;
+                hpreg = 0.50;
+                selsaimilih = true;
+            }
+            
+          }else if (isInside(mousePos, rectBtnHpRegen2)) {
+            if(points<=7){
+                alert("maaf, point anda kurang");
+            }else{
+                points -= 8;
+                hpreg = 0.70;
+                selsaimilih = true;
+            }
+          }else if (isInside(mousePos, rectBtnBack)) {
+            localStorage.setItem("pointkirim1",points);
+            localStorage.setItem("damagekirim",dmg);
+            localStorage.setItem("defensekirim",def);
+            localStorage.setItem("hpregenkirim",hpreg);
+            window.location.href = "index.html";    
+            }
+
+        if(selsaimilih === true){
+            localStorage.setItem("pointkirim1",points);
+            localStorage.setItem("damagekirim",dmg);
+            localStorage.setItem("defensekirim",def);
+            localStorage.setItem("hpregenkirim",hpreg);
+            window.location.href = "index.html";   
+        }
+
+        },
+        false
+      );
+      gambarMenu();
+    </script>
+  </body>
+</html>
