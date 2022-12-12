@@ -27,20 +27,20 @@ if(isNaN(point1) === true){
     point+=parseInt(point1);
 }
 
-dmg += parseInt(window.onload = localStorage.getItem("dmgkirim"));
-def += parseInt(window.onload = localStorage.getItem("defkirim"));
-hpreg += parseInt(window.onload = localStorage.getItem("hpregkirim"));
+dmg += parseInt(window.onload = localStorage.getItem("damagekirim"));
+def += parseInt(window.onload = localStorage.getItem("defensekirim"));
+hpreg += parseInt(window.onload = localStorage.getItem("hpregenkirim"));
 
 
-if(isNaN(dmg) === true){
+if(isNaN(dmg) === true || dmg === 0){
     dmg = 1;
 }
 
-if(isNaN(def) === true){
+if(isNaN(def) === true || def === 0){
     def = 0;
 }
 
-if(isNaN(hpreg) === true){
+if(isNaN(hpreg) === true || hpreg === 0){
     hpreg = 0;
 }
 dmgasli*=parseInt(dmg);
@@ -124,6 +124,8 @@ choices.forEach((choose, PlayerChoose) => {
             window.location.href = "kalah.html";
         }
     })
+    console.log(dmg)
+    console.log(dmgasli)
 })
 
 
